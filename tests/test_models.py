@@ -22,6 +22,7 @@ from django.utils.html import strip_tags
 from django.utils.timezone import now
 from django.utils.translation import get_language, override
 from djangocms_helper.utils import CMS_30
+from filer.models import ThumbnailOption  # NOQA
 from menus.menu_pool import menu_pool
 from parler.utils.context import smart_override
 from taggit.models import Tag
@@ -32,12 +33,6 @@ from djangocms_blog.models import BlogCategory, Post
 from djangocms_blog.settings import MENU_TYPE_NONE, get_setting
 
 from .base import BaseTest
-
-try:  # pragma: no cover
-    from cmsplugin_filer_image.models import ThumbnailOption  # NOQA
-except ImportError:  # pragma: no cover
-    from filer.models import ThumbnailOption  # NOQA
-
 
 try:
     from unittest import SkipTest
@@ -633,6 +628,10 @@ class AdminTest(BaseTest):
                 config_admin = admin.site._registry[BlogConfig]
                 config_admin.change_view(request, str(self.app_config_1.pk))
                 second_nodes = self.get_nodes(menu_pool, request)
+                for node in first_nodes:
+                    print(node)
+                for node in second_nodes:
+                    print(node)
                 self.assertNotEqual(len(first_nodes), len(second_nodes))
 
 

@@ -20,7 +20,6 @@ HELPER_SETTINGS = dict(
         'easy_thumbnails',
         'django.contrib.sitemaps',
         'djangocms_text_ckeditor',
-        'cmsplugin_filer_image',
         'taggit',
         'taggit_autosuggest',
         'aldryn_apphooks_config',
@@ -107,16 +106,6 @@ HELPER_SETTINGS = dict(
     BLOG_AUTO_SETUP=False,
     ALLOWED_HOSTS=['*'],
 )
-
-try:
-    import cmsplugin_filer_image.migrations_django  # pragma: no cover # NOQA
-
-    HELPER_SETTINGS[
-        'MIGRATION_MODULES'
-    ]['cmsplugin_filer_image'] = 'cmsplugin_filer_image.migrations_django'
-
-except ImportError:
-    pass
 
 try:
     import knocker  # pragma: no cover # NOQA

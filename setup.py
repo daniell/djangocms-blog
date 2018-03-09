@@ -35,7 +35,6 @@ setup(
         'django-taggit-templatetags',
         'django-taggit-autosuggest',
         'djangocms-text-ckeditor',
-        'cmsplugin-filer>=1.0',
         'easy-thumbnails>=2.4.1',
         'django-meta>=1.2',
         'django-meta-mixin>=0.3',

@@ -11,7 +11,6 @@ class Migration(migrations.Migration):
         dependencies = [
             ('djangocms_blog', '0016_auto_20160502_1741'),
             ('filer', '0003_thumbnailoption'),
-            ('cmsplugin_filer_image', '0003_mv_thumbnail_option_to_filer_20160119_1720'),
         ]
 
         operations = [

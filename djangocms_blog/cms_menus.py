@@ -37,9 +37,15 @@ class BlogCategoryMenu(CMSAttachMenu):
 
         language = get_language_from_request(request, check_path=True)
         current_site = get_current_site(request)
-
-        if self.instance and self.instance.site != current_site:
-            return []
+        
+        if self.instance: 
+            if hasattr(self.instance, 'node'):
+                site = self.instance.node.site
+            else:
+                site = self.instance.site
+            
+            if site != current_site:
+                return []
 
         categories_menu = False
         posts_menu = False
